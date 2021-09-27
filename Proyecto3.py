@@ -1,19 +1,23 @@
 """UNIVERSIDAD DEL VALLE DE GUATEMALA 
  * LOGICA MATEMÁTICA 
  * RESULTADOS: PROYECTO 3 - RECONOCEDOR DE EXPRESIONES DEL CÁLCULO PROPOSICIONAL
-/* File:     Proyecto3.py
+ * File:     Proyecto3.py
  * Input:    Lista de elementos            
  * Output:   Grafo
  *
  * Integrantes:
  *    1. Priscilla González 
  *    2. Martha Gomez 
-*     3. María Mercedes Retolaza 
+ *    3. María Mercedes Retolaza 
  *    4. Sebastían Maldonado
  *    5. Julio Herrera
+ *
+ * Referencias: https://ericknavarro.io/2020/02/10/24-Mi-primer-proyecto-utilizando-PLY/
+ *              https://saintuszephir.com/programacion/python/calculadora-en-python-usando
+ *              -expresiones-regulares-desde-cero/?amp=1
  */""" 
 
-"""------------------------------------------------------------------------------"""    
+"""------------------------------------------------------------------------------------"""    
 
 # LIBRERÍAS
 import networkx as nx
