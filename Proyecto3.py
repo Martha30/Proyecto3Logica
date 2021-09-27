@@ -15,7 +15,7 @@
  * Referencias: https://ericknavarro.io/2020/02/10/24-Mi-primer-proyecto-utilizando-PLY/
  *              https://saintuszephir.com/programacion/python/calculadora-en-python-usando
  *              -expresiones-regulares-desde-cero/?amp=1
- */""" 
+ *""" 
 
 """------------------------------------------------------------------------------------"""    
 
@@ -50,6 +50,7 @@ t_LCON = r'\=>'
 t_LBI = r'\<=>'
 t_C1 = r'\('
 t_C2 = r'\)'
+#pt_P = r'\p'
 
 # VALORES IGNORADOS PARA NO OCASIONAR NINGÚN PROBLEMA
 t_ignore = r' '
@@ -80,7 +81,7 @@ precedence = (
 def p_gramatica(t):
     '''calcu : expresion'''
     print(t[1])
-    print(calcularE(t[1]))
+    print("Valor de la expresión regular: ", calcularE(t[1]))
     print(graficar(t[1]))
 
 # OPERADORES LÓGICOS
@@ -148,6 +149,9 @@ def graficar(t):
                 g.add_node(t[2])
                 g.add_edge(t[0], t[2])
 
+    else:
+        g.add_node(t[0])
+
     # CARACTERÍRCAS DEL GRAFO A DIBUJAR
     grafo = {
           'node_color': '#B2EA0D',
@@ -170,9 +174,9 @@ def calcularE(t):
             temp2 = calcularE(t[2])
             
             if temp1 == True and temp2 == False:
-                return 1
-            
-            return 0
+                return 0
+
+            return 1
         elif t[0] == '<=>':
             temp1 = calcularE(t[1])
             temp2 = calcularE(t[2])
@@ -182,7 +186,13 @@ def calcularE(t):
             
             return 1
         elif t[0] == '^':
-            return (calcularE(t[1]) and calcularE(t[2]))
+            #return (calcularE(t[1]) and calcularE(t[2]))
+            temp1 = calcularE(t[1])
+            #temp2 = calcularE(t[2])
+            
+            if temp1 == True:
+                return 0
+            return 1
         elif t[0] == '|':
             return (calcularE(t[1]) or calcularE(t[2]))
         elif t[0] == '~':
@@ -193,7 +203,7 @@ def calcularE(t):
             else:
                 return temp[t[1]]
     else:
-        return t
+        return True
 
 # SALIDA
 while True:
